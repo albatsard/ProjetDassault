@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,17 +22,16 @@ import javax.persistence.OneToMany;
 @Entity
 public class Utilisateur implements Serializable {
 
+    @OneToMany(mappedBy = "leVendeur")
+    private List<Lead_Opportunity> les_Vendeur_lead_Opportunitys;
+
+    @OneToMany(mappedBy = "leMarketeur")
+    private List<Lead_Opportunity> les_Marketeur_lead_Opportunitys;
+
+
     @OneToMany(mappedBy = "leUtilisateur")
     private Collection<Action> lesActions;
 
-    @OneToMany(mappedBy = "leVendeur")
-    private Collection<Vendeur_Lead> lesVendeur_Leads;
-
-    @OneToMany(mappedBy = "leMarketeur")
-    private Collection<Marketer_Lead> lesMarketer_Leads;
-
-    @OneToMany(mappedBy = "leUtilisateur")
-    private Collection<Role_Utilisateur> lesRoles_Utilisateurs;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -152,29 +152,6 @@ public class Utilisateur implements Serializable {
         this.motdepasse = motdepasse;
     }
 
-    public Collection<Role_Utilisateur> getLesRoles_Utilisateurs() {
-        return lesRoles_Utilisateurs;
-    }
-
-    public void setLesRoles_Utilisateurs(Collection<Role_Utilisateur> lesRoles_Utilisateurs) {
-        this.lesRoles_Utilisateurs = lesRoles_Utilisateurs;
-    }
-
-    public Collection<Vendeur_Lead> getLesVendeur_Leads() {
-        return lesVendeur_Leads;
-    }
-
-    public void setLesVendeur_Leads(Collection<Vendeur_Lead> lesVendeur_Leads) {
-        this.lesVendeur_Leads = lesVendeur_Leads;
-    }
-
-    public Collection<Marketer_Lead> getLesMarketer_Leads() {
-        return lesMarketer_Leads;
-    }
-
-    public void setLesMarketer_Leads(Collection<Marketer_Lead> lesMarketer_Leads) {
-        this.lesMarketer_Leads = lesMarketer_Leads;
-    }
 
     public Collection<Action> getLesActions() {
         return lesActions;
@@ -183,6 +160,49 @@ public class Utilisateur implements Serializable {
     public void setLesActions(Collection<Action> lesActions) {
         this.lesActions = lesActions;
     }
+    
+    @ManyToMany
+        private Collection<Roles> lesRoles;
+
+    /**
+     * Get the value of lesRoles
+     *
+     * @return the value of lesRoles
+     */
+    public Collection<Roles> getLesRoles() {
+        return lesRoles;
+    }
+
+    /**
+     * Set the value of lesRoles
+     *
+     * @param lesRoles new value of lesRoles
+     */
+    public void setLesRoles(Collection<Roles> lesRoles) {
+        this.lesRoles = lesRoles;
+    }
+
+    public List<Lead_Opportunity> getLes_Marketeur_lead_Opportunitys() {
+        return les_Marketeur_lead_Opportunitys;
+    }
+
+    public void setLes_Marketeur_lead_Opportunitys(List<Lead_Opportunity> les_Marketeur_lead_Opportunitys) {
+        this.les_Marketeur_lead_Opportunitys = les_Marketeur_lead_Opportunitys;
+    }
+
+    public List<Lead_Opportunity> getLes_Vendeur_lead_Opportunitys() {
+        return les_Vendeur_lead_Opportunitys;
+    }
+
+    public void setLes_Vendeur_lead_Opportunitys(List<Lead_Opportunity> les_Vendeur_lead_Opportunitys) {
+        this.les_Vendeur_lead_Opportunitys = les_Vendeur_lead_Opportunitys;
+    }
+
+    
+
+
+
+    
     
     
     
