@@ -135,6 +135,9 @@ public class Offre implements Serializable {
         this.conditions = conditions;
     }
     
+   
+
+    
 
     
 }
