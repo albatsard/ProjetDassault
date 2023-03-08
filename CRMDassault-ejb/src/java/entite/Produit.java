@@ -5,10 +5,12 @@
 package entite;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -16,6 +18,9 @@ import javax.persistence.Id;
  */
 @Entity
 public class Produit implements Serializable {
+
+    @OneToMany(mappedBy = "leProduit")
+    private List<Produit_Offre> lesProduit_Offres;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -115,6 +120,16 @@ public class Produit implements Serializable {
     public void setPrix_unitaire(double prix_unitaire) {
         this.prix_unitaire = prix_unitaire;
     }
+
+    public List<Produit_Offre> getLesProduit_Offres() {
+        return lesProduit_Offres;
+    }
+
+    public void setLesProduit_Offres(List<Produit_Offre> lesProduit_Offres) {
+        this.lesProduit_Offres = lesProduit_Offres;
+    }
+    
+    
 
     
 }

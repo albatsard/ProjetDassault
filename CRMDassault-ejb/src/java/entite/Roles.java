@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -21,8 +22,9 @@ import javax.persistence.OneToMany;
 @Entity
 public class Roles implements Serializable {
 
-    @OneToMany(mappedBy = "leRole")
-    private Collection<Role_Utilisateur> lesRole_Utilisateurs;
+    @ManyToMany(mappedBy = "lesRoles")
+    private List<Utilisateur> lesUtilisateurs;
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,13 +104,14 @@ public class Roles implements Serializable {
         this.description = description;
     }
 
-    public Collection<Role_Utilisateur> getLesRole_Utilisateurs() {
-        return lesRole_Utilisateurs;
+    public List<Utilisateur> getLesUtilisateurs() {
+        return lesUtilisateurs;
     }
 
-    public void setLesRole_Utilisateurs(Collection<Role_Utilisateur> lesRole_Utilisateurs) {
-        this.lesRole_Utilisateurs = lesRole_Utilisateurs;
+    public void setLesUtilisateurs(List<Utilisateur> lesUtilisateurs) {
+        this.lesUtilisateurs = lesUtilisateurs;
     }
+
 
     
     

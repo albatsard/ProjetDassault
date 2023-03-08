@@ -5,10 +5,13 @@
 package entite;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -16,6 +19,9 @@ import javax.persistence.Id;
  */
 @Entity
 public class Offre implements Serializable {
+
+    @OneToMany(mappedBy = "leOffre")
+    private List<Produit_Offre> lesProduit_Offres;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -135,7 +141,37 @@ public class Offre implements Serializable {
         this.conditions = conditions;
     }
     
-   
+    @OneToOne
+        private Lead_Opportunity leLead;
+
+    /**
+     * Get the value of leLead
+     *
+     * @return the value of leLead
+     */
+    public Lead_Opportunity getLeLead() {
+        return leLead;
+    }
+
+    /**
+     * Set the value of leLead
+     *
+     * @param leLead new value of leLead
+     */
+    public void setLeLead(Lead_Opportunity leLead) {
+        this.leLead = leLead;
+    }
+
+    public List<Produit_Offre> getLesProduit_Offres() {
+        return lesProduit_Offres;
+    }
+
+    public void setLesProduit_Offres(List<Produit_Offre> lesProduit_Offres) {
+        this.lesProduit_Offres = lesProduit_Offres;
+    }
+    
+
+
 
     
 

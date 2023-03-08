@@ -190,13 +190,7 @@ public class Utilisateur implements Serializable {
         this.les_Marketeur_lead_Opportunitys = les_Marketeur_lead_Opportunitys;
     }
 
-    public List<Lead_Opportunity> getLes_Vendeur_lead_Opportunitys() {
-        return les_Vendeur_lead_Opportunitys;
-    }
 
-    public void setLes_Vendeur_lead_Opportunitys(List<Lead_Opportunity> les_Vendeur_lead_Opportunitys) {
-        this.les_Vendeur_lead_Opportunitys = les_Vendeur_lead_Opportunitys;
-    }
 
     
 

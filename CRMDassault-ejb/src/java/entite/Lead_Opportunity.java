@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -23,14 +24,10 @@ import javax.persistence.Temporal;
 @Entity
 public class Lead_Opportunity implements Serializable {
 
-    @OneToMany(mappedBy = "leLead")
-    private List<Offre> offres;
+    @OneToOne(mappedBy = "leLead")
+    private Offre lOffre;
 
-    @OneToMany(mappedBy = "leLead")
-    private Collection<Vendeur_Lead> lesVendeur_Leads;
 
-    @OneToMany(mappedBy = "leLead")
-    private Collection<Marketer_Lead> lesMarketer_Leads;
 
     @OneToMany(mappedBy = "leLead_Opportunity")
     private Collection<Enregistrement> lesEnregistrements;
@@ -273,44 +270,77 @@ public class Lead_Opportunity implements Serializable {
     public void setLesEnregistrements(Collection<Enregistrement> lesEnregistrements) {
         this.lesEnregistrements = lesEnregistrements;
     }
+    
+    @ManyToOne
+        private Client leClient;
 
-    public Collection<Vendeur_Lead> getLesVendeur_Leads() {
-        return lesVendeur_Leads;
+    /**
+     * Get the value of leClient
+     *
+     * @return the value of leClient
+     */
+    public Client getLeClient() {
+        return leClient;
     }
 
-    public void setLesVendeur_Leads(Collection<Vendeur_Lead> lesVendeur_Leads) {
-        this.lesVendeur_Leads = lesVendeur_Leads;
-    }
-
-    public Collection<Marketer_Lead> getLesMarketer_Leads() {
-        return lesMarketer_Leads;
-    }
-
-    public void setLesMarketer_Leads(Collection<Marketer_Lead> lesMarketer_Leads) {
-        this.lesMarketer_Leads = lesMarketer_Leads;
+    /**
+     * Set the value of leClient
+     *
+     * @param leClient new value of leClient
+     */
+    public void setLeClient(Client leClient) {
+        this.leClient = leClient;
     }
     
-    @OneToOne
-        private Offre leOffre;
+    @ManyToOne
+        private Utilisateur leMarketeur;
 
     /**
-     * Get the value of leOffre
+     * Get the value of leMarketeur
      *
-     * @return the value of leOffre
+     * @return the value of leMarketeur
      */
-    public Offre getLeOffre() {
-        return leOffre;
+    public Utilisateur getLeMarketeur() {
+        return leMarketeur;
     }
 
     /**
-     * Set the value of leOffre
+     * Set the value of leMarketeur
      *
-     * @param leOffre new value of leOffre
+     * @param leMarketeur new value of leMarketeur
      */
-    public void setLeOffre(Offre leOffre) {
-        this.leOffre = leOffre;
+    public void setLeMarketeur(Utilisateur leMarketeur) {
+        this.leMarketeur = leMarketeur;
     }
 
+    public Offre getlOffre() {
+        return lOffre;
+    }
+
+    public void setlOffre(Offre lOffre) {
+        this.lOffre = lOffre;
+    }
+
+    @ManyToOne
+    private Utilisateur leVendeur;
+
+    /**
+     * Get the value of leVendeur
+     *
+     * @return the value of leVendeur
+     */
+    public Utilisateur getLeVendeur() {
+        return leVendeur;
+    }
+
+    /**
+     * Set the value of leVendeur
+     *
+     * @param leVendeur new value of leVendeur
+     */
+    public void setLeVendeur(Utilisateur leVendeur) {
+        this.leVendeur = leVendeur;
+    }
 
     
 

@@ -20,6 +20,9 @@ import javax.persistence.OneToMany;
 public class Client implements Serializable {
 
     @OneToMany(mappedBy = "leClient")
+    private List<Lead_Opportunity> lesLead_Opportunitys;
+
+    @OneToMany(mappedBy = "leClient")
     private List<Contact> lesContacts;
 
     private static final long serialVersionUID = 1L;
@@ -86,6 +89,14 @@ public class Client implements Serializable {
 
     public void setLesContacts(List<Contact> lesContacts) {
         this.lesContacts = lesContacts;
+    }
+
+    public List<Lead_Opportunity> getLesLead_Opportunitys() {
+        return lesLead_Opportunitys;
+    }
+
+    public void setLesLead_Opportunitys(List<Lead_Opportunity> lesLead_Opportunitys) {
+        this.lesLead_Opportunitys = lesLead_Opportunitys;
     }
 
     

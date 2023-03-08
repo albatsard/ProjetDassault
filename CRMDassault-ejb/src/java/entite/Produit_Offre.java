@@ -16,7 +16,7 @@ import javax.persistence.ManyToOne;
  * @author thoma
  */
 @Entity
-public class Marketer_Lead implements Serializable {
+public class Produit_Offre implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -41,10 +41,10 @@ public class Marketer_Lead implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Marketer_Lead)) {
+        if (!(object instanceof Produit_Offre)) {
             return false;
         }
-        Marketer_Lead other = (Marketer_Lead) object;
+        Produit_Offre other = (Produit_Offre) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -53,52 +53,70 @@ public class Marketer_Lead implements Serializable {
 
     @Override
     public String toString() {
-        return "entite.Marketer_Lead[ id=" + id + " ]";
+        return "entite.Produit_Offre[ id=" + id + " ]";
     }
     
+        private int quantite;
+
+    /**
+     * Get the value of quantite
+     *
+     * @return the value of quantite
+     */
+    public int getQuantite() {
+        return quantite;
+    }
+
+    /**
+     * Set the value of quantite
+     *
+     * @param quantite new value of quantite
+     */
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
     @ManyToOne
-        private Utilisateur leMarketeur;
+        private Offre leOffre;
 
     /**
-     * Get the value of leMarketeur
+     * Get the value of leOffre
      *
-     * @return the value of leMarketeur
+     * @return the value of leOffre
      */
-    public Utilisateur getLeMarketeur() {
-        return leMarketeur;
+    public Offre getLeOffre() {
+        return leOffre;
     }
 
     /**
-     * Set the value of leMarketeur
+     * Set the value of leOffre
      *
-     * @param leMarketeur new value of leMarketeur
+     * @param leOffre new value of leOffre
      */
-    public void setLeMarketeur(Utilisateur leMarketeur) {
-        this.leMarketeur = leMarketeur;
+    public void setLeOffre(Offre leOffre) {
+        this.leOffre = leOffre;
     }
 
-    
     @ManyToOne
-        private Lead_Opportunity leLead;
+        private entite.Produit leProduit;
 
     /**
-     * Get the value of leLead
+     * Get the value of leProduit
      *
-     * @return the value of leLead
+     * @return the value of leProduit
      */
-    public Lead_Opportunity getLeLead() {
-        return leLead;
+    public entite.Produit getLeProduit() {
+        return leProduit;
     }
 
     /**
-     * Set the value of leLead
+     * Set the value of leProduit
      *
-     * @param leLead new value of leLead
+     * @param leProduit new value of leProduit
      */
-    public void setLeLead(Lead_Opportunity leLead) {
-        this.leLead = leLead;
+    public void setLeProduit(entite.Produit leProduit) {
+        this.leProduit = leProduit;
     }
 
-    
     
 }
